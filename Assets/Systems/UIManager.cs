@@ -1,16 +1,24 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] bool debugEnabled = false;
+
+    [SerializeField] private TMP_Text messageText;
+
+    private string currentMessage = "";
+
+    private void Start()
     {
-        
+        currentMessage = "";
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DisplayMessage(string message)
     {
-        
+        currentMessage = message;
+
+        messageText.text = currentMessage;
     }
 }
