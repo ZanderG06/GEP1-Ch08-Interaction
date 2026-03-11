@@ -7,8 +7,6 @@ public class InteractableObject : MonoBehaviour, IInteractable
     public void Interact()
     {
         if (debugEnabled) Debug.Log("Interacted with " + gameObject.name);
-
-        Destroy(gameObject);
     }
 
     public void Focused()
