@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
 
     private IEnumerator DisplayMessageAndFade(string message, TMP_Text messageText)
     {
+        elapsedTime = 0f;
         messageText.text = message;
         messageText.alpha = 1;
 
@@ -60,6 +61,8 @@ public class UIManager : MonoBehaviour
     public void TalkToGnome(string message)
     {
         gnomeText.text = message;
+
+        if (fadeCoroutine != null) StopCoroutine(fadeCoroutine);
 
         fadeCoroutine = StartCoroutine(DisplayMessageAndFade(message, gnomeText));
     }
