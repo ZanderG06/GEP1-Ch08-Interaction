@@ -14,16 +14,18 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TMP_Text messageText;
 
+    [SerializeField] private TMP_Text gnomeText;
+
     private Coroutine fadeCoroutine;
 
     public void DisplayMessage(string message)
     {
         if(fadeCoroutine != null) StopCoroutine(fadeCoroutine);
 
-        fadeCoroutine = StartCoroutine(DisplayMessageAndFade(message));
+        fadeCoroutine = StartCoroutine(DisplayMessageAndFade(message, messageText));
     }
 
-    private IEnumerator DisplayMessageAndFade(string message)
+    private IEnumerator DisplayMessageAndFade(string message, TMP_Text messageText)
     {
         messageText.text = message;
         messageText.alpha = 1;
@@ -53,5 +55,12 @@ public class UIManager : MonoBehaviour
     public void HidePrompt()
     {
         messageText.text = "";
+    }
+
+    public void TalkToGnome(string message)
+    {
+        gnomeText.text = message;
+
+        fadeCoroutine = StartCoroutine(DisplayMessageAndFade(message, gnomeText));
     }
 }
